@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<%= @string_code %>
+<h1>Events</h1>
+<% unless @events.empty? %>
+  <div class="flex_parent">
+    <% @events.each do |event| %>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><%= event.event_name %></h4>
+          <h5 class="card-title">
+            Status:
+            <% unless event.event_date <= DateTime.current.to_date %>
+              <% if event.amount_of_ticket == 0 %>sold
+              <% else %>current
+                <% end %>
+            <% else %>undated
+            <% end %>
+          </h5>
+          <h6 class="card-subtitle mb-2 text-muted">Price: <%= event.price_by_ticket %> EUR</h6>
+          <h6 class="card-subtitle mb-2 text-muted">Remaining tickets: <%= event.amount_of_ticket %></h6>
+          <h6 class="card-subtitle mb-2 text-muted">Date and time: <%= event.event_date %>
+            , <%= event.event_time.strftime("%k:%M") %></h6>
+          <h6 class="card-subtitle mb-2 text-muted">Address: <%= event.address %>, <%= event.city %></h6>
+          <p class="card-text"><%= event.description %></p>
+          <% if @log_in and event.amount_of_ticket > 0 and event.event_date >= DateTime.current.to_date %>
+            <%= link_to 'Buy ticket', new_ticket_path(event_id: event.id), class: "btn btn-primary " %>
+          <% end %>
+          <%= link_to 'Show', event, class: "btn btn-warning " %>
+          <% if current_user.try(:admin?) %>
+            <%= link_to 'Edit', edit_event_path(event), class: "btn btn-warning " %>
+            <%= link_to 'Cancel event', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link " %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>There are currently no events</p>
+<% end %>
+<br><br>
+<% if current_user.try(:admin?) %>
+  <%= link_to 'Add new Event', new_event_path, class: "btn btn-outline-success" %>
+<% end %>
+

@@ -1,0 +1,10 @@
+<%= DateTime.current.to_date %>
+<% if @log_in %>
+  <% if current_user.admin %>
+    <p>you are logged in as admin</p>
+  <% else %>
+    <p>you are logged in as normal user</p>
+  <% end %>
+<% end %>
+
+

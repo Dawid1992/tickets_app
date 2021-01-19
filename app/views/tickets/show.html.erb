@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event name:</strong>
+  <%= @ticket.event.event_name %>
+</p>
+
+<p>
+  <strong>Event date:</strong>
+   <%= @ticket.event.event_date %>
+</p>
+
+<p>
+  <strong>Event address:</strong>
+  <%= @ticket.event.address %>, <%= @ticket.event.city %>
+</p>
+
+<p>
+  <strong>Event time:</strong>
+  <%= @ticket.event.event_time.strftime("%k:%M") %>
+</p>
+
+<p>
+  <strong>Ticket price:</strong>
+  <%= @ticket.event.price_by_ticket %> EUR
+</p>
+
+<p>
+  <strong>Purchase date:</strong>
+  <%= @ticket.purchase_date %>
+</p>
+
+
+
+<%= link_to 'Back', tickets_path %>

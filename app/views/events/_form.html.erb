@@ -1,0 +1,61 @@
+<%= form_with(model: event) do |form| %>
+  <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+        <% event.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="field col">
+      <%= form.label :event_name ,class:"form-label" %>
+      <%= form.text_field :event_name, :required => true, class:"form-control" %>
+    </div>
+
+    <div class="field col">
+      <%= form.label :description ,class:"form-label" %>
+      <%= form.text_area(:description, size: '40x5',class: 'form-control')%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="field col">
+      <%= form.label :city ,class:"form-label" %>
+      <%= form.text_field :city, :required => true, class:"form-control" %>
+    </div>
+
+    <div class="field col">
+      <%= form.label :address ,class:"form-label" %>
+      <%= form.text_field :address, :required => true, class:"form-control" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="field col">
+      <%= form.label :price_by_ticket ,class:"form-label" %>
+      <%= form.number_field :price_by_ticket, :required => true, min:1, class:"form-control" %>
+    </div>
+
+    <div class="field col">
+      <%= form.label :amount_of_ticket ,class:"form-label" %>
+      <%= form.number_field :amount_of_ticket, :required => true, min: 5, class:"form-control" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="field col">
+      <%= form.label :event_date, 'Event date (YYYY/MM/DD)', class:"form-label" %>
+      <%= form.date_select :event_date, :required => true %>
+    </div>
+
+    <div class="field col">
+      <%= form.label :event_time ,'Event time (HH:MM)' %>
+      <%= form.time_select :event_time, :required => true %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= form.submit "Create new event", class: "btn btn-success" %>
+  </div>
+<% end %>

@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event name:</strong>
+  <%= @event.event_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @event.city %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @event.address %>
+</p>
+
+<p>
+  <strong>Price by ticket:</strong>
+  <%= @event.price_by_ticket %> EUR
+</p>
+
+<p>
+  <strong>Tickets available:</strong>
+  <%= @event.amount_of_ticket %>
+</p>
+
+<p>
+  <strong>Event date:</strong>
+  <%= @event.event_date %>
+</p>
+
+<p>
+  <strong>Event time:</strong>
+  <%= @event.event_time.strftime("%k:%M") %>
+</p>
+
+<% if @log_in and @event.amount_of_ticket > 0 %>
+  <td><%= link_to 'Buy ticket', new_ticket_path(event_id: @event.id), class: "btn btn-primary" %></td>
+<% end %>
+
+<% if current_user.try(:admin?) %>
+  <%= link_to 'Edit', edit_event_path(@event), class: "btn btn-secondary" %>
+<% end %>
+<%= link_to 'Back', events_path, class: "btn btn-link" %>

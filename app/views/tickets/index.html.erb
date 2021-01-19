@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tickets</h1>
+
+<% if @your_ticket %>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Event</th>
+      <th>Purchase date</th>
+      <th colspan="2"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <% @your_ticket.each do |ticket| %>
+
+      <tr>
+        <td><%= ticket.event.event_name %></td>
+        <td><%= ticket.purchase_date %></td>
+        <td><%= link_to 'Show', ticket %></td>
+        <td><%= link_to 'Return ticket', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>You dont have any tickets</p>
+<% end %>
+
+
+
+<br>
+
+<%#= link_to 'New Ticket', new_ticket_path %>
