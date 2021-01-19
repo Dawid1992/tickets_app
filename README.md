@@ -1,24 +1,23 @@
-# README
+the project involves buying tickets to selected events
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+the first registered user automatically becomes an administrator
 
-Things you may want to cover:
+administrator can add new events, edit and delete them
 
-* Ruby version
+normal user can view event details and purchase tickets
 
-* System dependencies
+in order to purchase tickets you need to provide the correct card number
 
-* Configuration
+For the purpose of this project I added the following card numbers that trigger a certain event:
 
-* Database creation
+1212 1212 1212 1212 - the ticket was purchased correctly
 
-* Database initialization
+2323 2323 2323 2323 - Your card has been declined.
 
-* How to run the test suite
+3434 3434 3434 3434 - Something went wrong with your transaction.
 
-* Services (job queues, cache servers, search engines, etc.)
+any other string or number - Wrong card number
 
-* Deployment instructions
+after the purchase we can see the list of available tickets
 
-* ...
+I used simple styling from bootstrap to make the views less intimidating
