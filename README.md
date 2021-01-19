@@ -20,4 +20,6 @@ any other string or number - Wrong card number
 
 after the purchase we can see the list of available tickets
 
+Tests are executed after the command  $ rspec -f d spec/
+
 I used simple styling from bootstrap to make the views less intimidating
