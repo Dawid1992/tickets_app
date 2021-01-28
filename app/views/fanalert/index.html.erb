@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Events</h1>
+<% unless @fanalert.empty? %>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>User</th>
+        <th>Event name</th>
+        <th>Event ticket status</th>
+        <th colspan="2"></th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <% @fanalert.each do |fanalert| %>
+
+        <tr>
+          <td><%= fanalert.user.username %></td>
+          <td><%= fanalert.event.event_name %></td>
+          <td><%= fanalert.event.amount_of_ticket %></td>
+          <td> <%= link_to 'Show event', fanalert.event, class: "link-warning" %></td>
+          <td><%= link_to 'Remove fanalert', fanalert, method: :delete, data: { confirm: 'Are you sure?' },class: "link-danger" %></td>
+        </tr>
+
+      <% end %>
+      </tbody>
+    </table>
+
+
+<% else %>
+  <p>There are currently no fanalerts</p>
+<% end %>
+<br><br>
+

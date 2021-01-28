@@ -1,6 +1,7 @@
 
 class Event < ApplicationRecord
   has_many :ticket, dependent: :destroy
+  has_many :fanalert, dependent: :destroy
   validates :event_name, presence: true
   validates :description, presence: true
   validates :price_by_ticket, presence: true

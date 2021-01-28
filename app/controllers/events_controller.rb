@@ -6,9 +6,6 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
 
-
-
-
   end
 
   # GET /events/1

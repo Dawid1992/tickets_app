@@ -1,4 +1,5 @@
 class TicketsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   # GET /tickets
@@ -19,16 +20,6 @@ class TicketsController < ApplicationController
 
   # GET /tickets/new
   def new
-
-    require 'mail'
-    mail = Mail.new do
-      from 'test@test.pl'
-      to 'yomaxis@wp.pl'
-      subject 'This is a test email'
-      body 'Some simple body'
-    end
-
-    mail.to_s
 
     @ticket = Ticket.new
     @event = Event.all

@@ -13,7 +13,7 @@
             <% unless event.event_date <= DateTime.current.to_date %>
               <% if event.amount_of_ticket == 0 %>sold
               <% else %>current
-                <% end %>
+              <% end %>
             <% else %>undated
             <% end %>
           </h5>
@@ -27,10 +27,16 @@
             <%= link_to 'Buy ticket', new_ticket_path(event_id: event.id), class: "btn btn-primary " %>
           <% end %>
           <%= link_to 'Show', event, class: "btn btn-warning " %>
+          <%= link_to 'Fanalert', new_fanalert_path(event_id: event.id), class: "btn btn-warning " %>
+          <%# if @allowToFollow %>
+            <%#= link_to 'Fanalert', new_fanalert_path(event_id: event.id), class: "btn btn-warning " %>
+          <%# end %>
           <% if current_user.try(:admin?) %>
-            <%= link_to 'Edit', edit_event_path(event), class: "btn btn-warning " %>
+            <%= link_to 'Edit', edit_event_path(event), class: "btn btn-warning " %><br>
             <%= link_to 'Cancel event', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link " %>
           <% end %>
+
+
         </div>
       </div>
     <% end %>

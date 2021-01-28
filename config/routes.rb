@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :fanalert
   resources :tickets
   resources :events
   get 'home/index'
