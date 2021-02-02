@@ -33,5 +33,3 @@ after the purchase we can see the list of available tickets
 Tests are executed after the command  $ rspec -f d spec/
 
 I used simple styling from bootstrap to make the views less intimidating
-
-The application is still being developed, in the future I would like to add sending emails after ticket purchase and adding a photo gallery in events
