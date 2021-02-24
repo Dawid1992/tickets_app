@@ -8,6 +8,8 @@ Server : puma v 5.0
 
 Tests : Rspec v 3.1
 
+
+
 the project involves buying tickets to selected events
 
 the first registered user automatically becomes an administrator
