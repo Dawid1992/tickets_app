@@ -35,3 +35,7 @@ after the purchase we can see the list of available tickets
 Tests are executed after the command  $ rspec -f d spec/
 
 I used simple styling from bootstrap to make the views less intimidating
+
+Dbaj o formatowanie syntaxu kodu, obczaj powszechne https://github.com/rubocop/rubocop do analizy statycznej, żeby mieć consistent kod (i z resztą teamu)
+
+Rubocop pomoże oprócz formatowania np. Z utrzymywaniem stylówy statycznych stringów ruby przyszłości, zazwyczaj widoczne w każdym projekcie https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/FrozenStringLiteralComment

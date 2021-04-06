@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
   end
 
-  def chek_log_in
+  def chek_log_in # nie apropos kodu, ale jak coś, to check
     if user_signed_in?
       @log_in = true
       unless User.exists?(admin: true)
