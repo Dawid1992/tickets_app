@@ -42,6 +42,7 @@ class TicketsController < ApplicationController
   # POST /tickets.json
   def create
 
+    # czemu wszystko jest zmiennymi instancji? nie wolno, lokalne rzeczy mają być lokalne
     @date_now = Date.today
     @amount = Integer(params[:ticket][:amount])
     @event_id = Integer(params[:ticket][:event_id])
@@ -71,9 +72,13 @@ class TicketsController < ApplicationController
       redirect_to new_ticket_path(event_id: @event_id), notice: 'You cannot buy more tickets than are available'
     else
       if (@allow_to_buy)
+        # za zmienne o nazwie i j k fug le pum par zal bul i cierpienie
+        # np. dać psvr zamiast payment_success_verification_result = ciepnięcie po ryju jak ktoś to będzie czytał
         i = 0
         l = @amount
 
+        # kiedy mozliwe unikac robienia for(i = 0; i < 100; i++) i `while` dlatego, ze uczyli w C++, zeby nie jeblo
+        # tak jak w JS 2020 iterować zawsze przez each, each, each oraz map, collect, select, find, times
         while i < l do
           @ticket = Ticket.new(ticket_params)
           @ticket.purchase_date = @date_now
@@ -103,6 +108,7 @@ class TicketsController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
+  # Dont use @@@@@ unless there's no way to bypass it, rób kod który da się czytać set_ticket(id) => return found ticket
   def set_ticket
     if Ticket.exists?(id: params[:id])
       @ticket = Ticket.find(params[:id])
